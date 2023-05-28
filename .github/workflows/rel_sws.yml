@@ -32,6 +32,7 @@ jobs:
           release_name: ${{ env.SWS_VERSION }}
 
   build-release:
+    permissions: write-all
     name: build-release
     needs: ['create-release']
     runs-on: ${{ matrix.os }}
