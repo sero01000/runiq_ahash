@@ -184,7 +184,6 @@ jobs:
         mkdir -p "$staging/"
         mkdir -p bin
 
-        cp {README.md,LICENSE-APACHE,LICENSE-MIT} "$staging/"
 
         if [ "${{ matrix.os }}" = "windows-2022" ]; then
           cp "target/${{ matrix.target }}/release/static-web-server.exe" "$staging/"
