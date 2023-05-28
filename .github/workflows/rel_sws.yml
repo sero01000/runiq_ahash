@@ -5,6 +5,7 @@ on:
 
 jobs:
   create-release:
+    permissions: write-all
     name: create-release
     runs-on: ubuntu-22.04
     outputs:
