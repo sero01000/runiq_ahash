@@ -8,7 +8,8 @@
 use clap::*;
 use fnv::FnvHashSet;
 use scalable_bloom_filter::ScalableBloomFilter;
-use twox_hash::XxHash64;
+// use twox_hash::XxHash64;
+use ahash::AHasher;
 
 use std::collections::HashSet;
 use std::hash::Hasher;
@@ -209,7 +210,8 @@ impl Filter for BloomFilter {
 /// Small hash binding around `Hasher`.
 fn hash(input: &[u8]) -> u64 {
     // create a new default hasher
-    let mut hasher = XxHash64::default();
+    // let mut hasher = XxHash64::default();
+    let mut hasher = AHasher::default();
 
     // write the bytes to the hasher
     hasher.write(input);

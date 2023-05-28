@@ -1,6 +1,6 @@
 [package]
-name = "runiq"
-version = "1.2.2" # remember to update html_root_url
+name = "runiq_ahash"
+version = "1.2.3" # remember to update html_root_url
 authors = ["Isaac Whitfield <iw@whitfin.io>"]
 description = "An efficient way to filter duplicate lines from input, à la uniq."
 repository = "https://github.com/whitfin/runiq"
@@ -18,4 +18,5 @@ bytelines = "2.4"
 clap = { version = "3.1", features = ["derive"] }
 fnv = "1.0"
 scalable_bloom_filter = "0.1"
-twox-hash = "1.6"
+ahash = "0.8.3"
+
