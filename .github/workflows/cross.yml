@@ -7,11 +7,11 @@ on:
     branches:
       - "**"
     tags-ignore:
-      - "precious-*"
+      - "runiq_ahash-*"
   pull_request:
 
 env:
-  CRATE_NAME: ${{ github.event.repository.name }}
+  CRATE_NAME: runiq_ahash
   GITHUB_TOKEN: ${{ github.token }}
   RUST_BACKTRACE: 1
 
@@ -31,164 +31,165 @@ jobs:
           - os_name: FreeBSD-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-freebsd
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-FreeBSD-x86_64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-FreeBSD-x86_64.tar.gz
             skip_tests: true
             
           - os_name: Linux-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-linux-musl
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-x86_64-musl.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-x86_64-musl.tar.gz
             
           - os_name: Linux-aarch64-musl
             os: ubuntu-20.04
             target: aarch64-unknown-linux-musl
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-aarch64-musl.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-aarch64-musl.tar.gz
             
           - os_name: Linux-aarch64
             os: ubuntu-20.04
             target: aarch64-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-aarch64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-aarch64.tar.gz
             
           - os_name: Linux-arm
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-arm-musl.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-arm-musl.tar.gz
             
           - os_name: Linux-i686
             os: ubuntu-20.04
             target: i686-unknown-linux-musl
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-i686-musl.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-i686-musl.tar.gz
             skip_tests: true
             
           - os_name: Linux-mips
             os: ubuntu-20.04
             target: mips-unknown-linux-musl
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-mips.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-mips.tar.gz
             
           - os_name: Linux-mipsel
             os: ubuntu-20.04
             target: mipsel-unknown-linux-musl
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-mipsel.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-mipsel.tar.gz
             
           - os_name: Linux-mips64
             os: ubuntu-20.04
             target: mips64-unknown-linux-muslabi64
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-mips64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-mips64.tar.gz
             skip_tests: true
             
           - os_name: Linux-mips64el
             os: ubuntu-20.04
             target: mips64el-unknown-linux-muslabi64
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-mips64el.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-mips64el.tar.gz
             skip_tests: true
             
           - os_name: Linux-powerpc
             os: ubuntu-20.04
             target: powerpc-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-powerpc-gnu.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-powerpc-gnu.tar.gz
             skip_tests: true
             
           - os_name: Linux-powerpc64
             os: ubuntu-20.04
             target: powerpc64-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-powerpc64-gnu.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-powerpc64-gnu.tar.gz
             skip_tests: true
             
           - os_name: Linux-powerpc64le
             os: ubuntu-20.04
             target: powerpc64le-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-powerpc64le.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-powerpc64le.tar.gz
             skip_tests: true
             
           - os_name: Linux-riscv64
             os: ubuntu-20.04
             target: riscv64gc-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-riscv64gc-gnu.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-riscv64gc-gnu.tar.gz
             
           - os_name: Linux-s390x
             os: ubuntu-20.04
             target: s390x-unknown-linux-gnu
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-s390x-gnu.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Linux-s390x-gnu.tar.gz
             skip_tests: true
             
           - os_name: NetBSD-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-netbsd
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-NetBSD-x86_64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-NetBSD-x86_64.tar.gz
             skip_tests: true
             
           - os_name: Windows-aarch64
             os: windows-latest
             target: aarch64-pc-windows-msvc
-            bin: ${{ github.event.repository.name }}.exe
-            name: ${{ github.event.repository.name }}-Windows-aarch64.zip
+            bin: runiq_ahash.exe
+            name: runiq_ahash-Windows-aarch64.zip
             skip_tests: true
             
           - os_name: Windows-i686
             os: windows-latest
             target: i686-pc-windows-msvc
-            bin: ${{ github.event.repository.name }}.exe
-            name: ${{ github.event.repository.name }}-Windows-i686.zip
+            bin: runiq_ahash.exe
+            name: runiq_ahash-Windows-i686.zip
             skip_tests: true
             
           - os_name: Windows-x86_64
             os: windows-latest
             target: x86_64-pc-windows-msvc
-            bin: ${{ github.event.repository.name }}.exe
-            name: ${{ github.event.repository.name }}-Windows-x86_64.zip
+            bin: runiq_ahash.exe
+            name: runiq_ahash-Windows-x86_64.zip
             
           - os_name: macOS-x86_64
             os: macos-12
             target: x86_64-apple-darwin
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Darwin-x86_64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Darwin-x86_64.tar.gz
             
           - os_name: macOS-aarch64
             os: macos-12
             target: aarch64-apple-darwin
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Darwin-aarch64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Darwin-aarch64.tar.gz
             skip_tests: true
             
           - os_name: IOS-aarch64
             os: macos-12
             target: aarch64-apple-ios
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-IOS-aarch64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-IOS-aarch64.tar.gz
             skip_tests: true
             
           - os_name: Android-aarch64
             os: ubuntu-22.04
             target: aarch64-linux-android
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Android-aarch64.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Android-aarch64.tar.gz
             
           - os_name: Android-armv7
             os: ubuntu-22.04
             target: armv7-linux-androideabi
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Android-armv7.tar.gz
+            bin: runiq_ahash
+            name: runiq_ahash-Android-armv7.tar.gz
             
         toolchain:
           - stable
           - beta
           - nightly
+        crate_name: runiq_ahash
     steps:
       - uses: actions/checkout@v3
       - name: Cache cargo & target directories
@@ -221,9 +222,9 @@ jobs:
         run: |
           cd target/${{ matrix.platform.target }}/release
           if [[ "${{ matrix.platform.os }}" == "windows-latest" ]]; then
-            7z a ../../../${{ matrix.platform.name }} ${{ github.event.repository.name }}
+            7z a ../../../${{ matrix.platform.name }} runiq_ahash
           else
-            tar czvf ../../../${{ matrix.platform.name }} ${{ github.event.repository.name }}
+            tar czvf ../../../${{ matrix.platform.name }} runiq_ahash
           fi
           cd -
         if: |
@@ -233,8 +234,8 @@ jobs:
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.repository.name }}-${{ matrix.platform.os_name }}
-          path: "${{ github.event.repository.name }}-*"
+          name: runiq_ahash-${{ matrix.platform.os_name }}
+          path: "runiq_ahash-*"
         if: matrix.toolchain == 'stable' && github.ref == 'refs/tags/test-release'
       - name: Generate SHA-256
         run: shasum -a 256 ${{ matrix.platform.name }}
@@ -247,6 +248,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           draft: true
-          files: "${{ github.event.repository.name }}-*"
+          files: "runiq_ahash-*"
           body_path: Changes.md
         if: matrix.toolchain == 'stable' && startsWith( github.ref, 'refs/tags/v' )
