@@ -15,6 +15,8 @@ jobs:
       - name: Dump github context
         run: |
           # echo "$GITHUB_CONTEXT"
+          echo "$GITHUB_CONTEXT.repository"
+          echo "${{ GITHUB_CONTEXT.repository }}"
           echo "$env.GITHUB_CONTEXT"
           echo "$env.GITHUB_CONTEXT.repository"
           echo "${{ env.GITHUB_CONTEXT.repository }}"
