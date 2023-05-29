@@ -3,12 +3,6 @@ name: Cross_v1
 on:
   release:
     types: [created]
-  push:
-    branches:
-      - "**"
-    tags-ignore:
-      - "runiq_ahash-*"
-  pull_request:
 
 env:
   CRATE_NAME: runiq_ahash
@@ -65,7 +59,7 @@ jobs:
           command: "build"
           target: ${{ matrix.platform.target }}
           toolchain: ${{ matrix.toolchain }}
-          args: "--locked --release"
+          args: "--release"
           strip: true
 
       - name: Package as archive
