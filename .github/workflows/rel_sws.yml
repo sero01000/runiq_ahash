@@ -183,7 +183,7 @@ jobs:
       run: |
         # echo "${PWD}"
         # echo "FOLDER_NAME=runiq_ahash" >> $GITHUB_ENV
-        staging="$runiq_ahash-${{ needs.create-release.outputs.sws_version }}-${{ matrix.target }}"
+        staging="runiq_ahash-${{ needs.create-release.outputs.sws_version }}-${{ matrix.target }}"
         mkdir -p "$staging/"
         mkdir -p bin
 
