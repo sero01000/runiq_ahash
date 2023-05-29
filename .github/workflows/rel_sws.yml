@@ -14,8 +14,10 @@ jobs:
     steps:
       - name: Dump github context
         run: |
-          echo "$GITHUB_CONTEXT"
+          # echo "$GITHUB_CONTEXT"
           echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "$env.REPO_NAME"
+          echo "${{ env.REPO_NAME }}"
         shell: bash
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
