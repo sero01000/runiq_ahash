@@ -39,11 +39,16 @@ jobs:
             target: x86_64-unknown-linux-musl
             bin: precious
             name: precious-Linux-x86_64-musl.tar.gz
-          - os_name: Linux-aarch64
+          - os_name: Linux-aarch64-musl
             os: ubuntu-20.04
             target: aarch64-unknown-linux-musl
             bin: precious
             name: precious-Linux-aarch64-musl.tar.gz
+          - os_name: Linux-aarch64
+            os: ubuntu-20.04
+            target: aarch64-unknown-linux-gnu
+            bin: precious
+            name: precious-Linux-aarch64.tar.gz
           - os_name: Linux-arm
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
@@ -130,16 +135,32 @@ jobs:
             bin: precious.exe
             name: precious-Windows-x86_64.zip
           - os_name: macOS-x86_64
-            os: macOS-latest
+            os: macos-12
             target: x86_64-apple-darwin
             bin: precious
             name: precious-Darwin-x86_64.tar.gz
           - os_name: macOS-aarch64
-            os: macOS-latest
+            os: macos-12
             target: aarch64-apple-darwin
             bin: precious
             name: precious-Darwin-aarch64.tar.gz
             skip_tests: true
+          - os_name: IOS-aarch64
+            os: macos-12
+            target: aarch64-apple-ios
+            bin: precious
+            name: precious-IOS-aarch64.tar.gz
+            skip_tests: true
+          - os_name: Android-aarch64
+            os: ubuntu-22.04
+            target: aarch64-linux-android
+            bin: precious
+            name: precious-Android-aarch64.tar.gz
+          - os_name: Android-armv7
+            os: ubuntu-22.04
+            target: armv7-linux-androideabi
+            bin: precious
+            name: precious-Android-armv7.tar.gz
         toolchain:
           - stable
           - beta
