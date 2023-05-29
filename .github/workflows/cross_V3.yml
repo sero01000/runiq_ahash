@@ -9,6 +9,7 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
   RUST_BACKTRACE: 1
 
+
 jobs:
   test:
     permissions: write-all
@@ -21,9 +22,17 @@ jobs:
           #
           # - sparc64-unknown-linux-gnu - cannot compile openssl-sys
           # - x86_64-unknown-illumos - weird error compiling openssl - "bin/sh: 1: granlib: not found"
+          # TEST:
+
           - os_name: Linux-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-linux-musl
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-x86_64-musl.tar.gz
+          
+          - os_name: Linux-x86_64
+            os: ubuntu-20.04
+            target: x86_64-unknown-linux-gnu
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-Linux-x86_64-musl.tar.gz
 
@@ -33,11 +42,23 @@ jobs:
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-Linux-aarch64.tar.gz
             
-          - os_name: Linux-arm
+          - os_name: Linux-arm-musleabi
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-Linux-arm-musl.tar.gz
+          
+          - os_name: Linux-arm-gnueabihf
+            os: ubuntu-20.04
+            target: arm-unknown-linux-gnueabihf
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-arm-gnueabihf.tar.gz
+
+          - os_name: Linux-armv7-musleabi
+            os: ubuntu-20.04
+            target: armv7-unknown-linux-musleabi
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-armv7-musleabi.tar.gz
             
           - os_name: Linux-i686
             os: ubuntu-20.04
@@ -106,11 +127,11 @@ jobs:
             name: ${{ github.event.repository.name }}-Apple-IOS-aarch64.tar.gz
             skip_tests: true
 
-          - os_name: Android-aarch64
+          - os_name: aarch64-linux-android
             os: ubuntu-22.04
             target: aarch64-linux-android
             bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Android-aarch64.tar.gz
+            name: ${{ github.event.repository.name }}-aarch64-linux-android.tar.gz
             
           - os_name: Android-armv7
             os: ubuntu-22.04
@@ -129,6 +150,10 @@ jobs:
       - name: Install musl-tools on Linux
         run: sudo apt-get update --yes && sudo apt-get install --yes musl-tools
         if: contains(matrix.platform.name, 'musl')
+      
+      - name: Install libunwind8-dev for Android
+        run: sudo apt-get update --yes && sudo apt-get install --yes libunwind8-dev
+        if: contains(matrix.platform.name, 'aarch64-linux-android')
 
       - name: Build binary
         uses: houseabsolute/actions-rust-cross@v0
