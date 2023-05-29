@@ -12,9 +12,6 @@ jobs:
       upload_url: ${{ steps.release.outputs.upload_url }}
       sws_version: ${{ env.SWS_VERSION }}
     steps:
-      - name: Repo name get
-        env:
-        REPO_NAME: ${{ PWD##*/ }}
       - name: Get the release version from the tag
         shell: bash
         if: env.SWS_VERSION == ''
@@ -184,6 +181,7 @@ jobs:
     - name: Build archive
       shell: bash
       run: |
+        echo "REPO_NAME=${PWD##*/}" >> $GITHUB_ENV
         staging="${{ env.REPO_NAME }}-${{ needs.create-release.outputs.sws_version }}-${{ matrix.target }}"
         mkdir -p "$staging/"
         mkdir -p bin
