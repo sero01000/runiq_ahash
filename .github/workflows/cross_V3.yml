@@ -152,7 +152,7 @@ jobs:
         if: contains(matrix.platform.name, 'musl')
       
       - name: Install libunwind8-dev for Android
-        run: sudo apt-get update --yes && sudo apt-get install --yes libunwind8-dev
+        run: sudo apt-get update --yes && sudo apt-get install --yes android-libunwind-dev
         if: contains(matrix.platform.name, 'aarch64-linux-android')
 
       - name: Build binary
