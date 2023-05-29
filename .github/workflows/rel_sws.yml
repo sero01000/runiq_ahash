@@ -202,7 +202,7 @@ jobs:
         # echo "FOLDER_NAME=${PWD##*/}" >> $GITHUB_ENV
         # echo "FOLDER_NAME=runiq_ahash" >> $GITHUB_ENV
         # echo "FOLDER_NAME=${{ github.event.pull_request.base.repo.name }}" >> $GITHUB_ENV
-        staging="$REPO_NAME2-${{ needs.create-release.outputs.sws_version }}-${{ matrix.target }}"
+        staging="${{ github.event.repository.name }}-${{ needs.create-release.outputs.sws_version }}-${{ matrix.target }}"
         mkdir -p "$staging/"
         mkdir -p bin
 
