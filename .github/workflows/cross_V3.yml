@@ -21,6 +21,36 @@ jobs:
           #
           # - sparc64-unknown-linux-gnu - cannot compile openssl-sys
           # - x86_64-unknown-illumos - weird error compiling openssl - "bin/sh: 1: granlib: not found"
+          - os_name: Linux-x86_64
+            os: ubuntu-20.04
+            target: x86_64-unknown-linux-musl
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-x86_64-musl.tar.gz
+
+          - os_name: Linux-aarch64
+            os: ubuntu-20.04
+            target: aarch64-unknown-linux-gnu
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-aarch64.tar.gz
+            
+          - os_name: Linux-arm
+            os: ubuntu-20.04
+            target: arm-unknown-linux-musleabi
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-arm-musl.tar.gz
+            
+          - os_name: Linux-i686
+            os: ubuntu-20.04
+            target: i686-unknown-linux-musl
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-i686-musl.tar.gz
+            skip_tests: true
+          
+          - os_name: Linux-riscv64
+            os: ubuntu-20.04
+            target: riscv64gc-unknown-linux-gnu
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Linux-riscv64gc-gnu.tar.gz
 
           - os_name: FreeBSD-x86_64
             os: ubuntu-20.04
@@ -28,18 +58,65 @@ jobs:
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-FreeBSD-x86_64.tar.gz
             skip_tests: true
-            
-          - os_name: Linux-x86_64
+
+          - os_name: NetBSD-x86_64
             os: ubuntu-20.04
-            target: x86_64-unknown-linux-musl
+            target: x86_64-unknown-netbsd
             bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Linux-x86_64-musl.tar.gz
+            name: ${{ github.event.repository.name }}-NetBSD-x86_64.tar.gz
+            skip_tests: true
  
           - os_name: Windows-x86_64
             os: windows-latest
             target: x86_64-pc-windows-msvc
             bin: ${{ github.event.repository.name }}.exe
             name: ${{ github.event.repository.name }}-Windows-x86_64.zip
+
+          - os_name: Windows-aarch64
+            os: windows-latest
+            target: aarch64-pc-windows-msvc
+            bin: ${{ github.event.repository.name }}.exe
+            name: ${{ github.event.repository.name }}-Windows-aarch64.zip
+            skip_tests: true
+            
+          - os_name: Windows-i686
+            os: windows-latest
+            target: i686-pc-windows-msvc
+            bin: ${{ github.event.repository.name }}.exe
+            name: ${{ github.event.repository.name }}-Windows-i686.zip
+            skip_tests: true
+          
+          - os_name: macOS-x86_64
+            os: macos-12
+            target: x86_64-apple-darwin
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Apple-Darwin-x86_64.tar.gz
+            
+          - os_name: macOS-aarch64
+            os: macos-12
+            target: aarch64-apple-darwin
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Apple-Darwin-aarch64.tar.gz
+            skip_tests: true
+            
+          - os_name: IOS-aarch64
+            os: macos-12
+            target: aarch64-apple-ios
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Apple-IOS-aarch64.tar.gz
+            skip_tests: true
+
+          - os_name: Android-aarch64
+            os: ubuntu-22.04
+            target: aarch64-linux-android
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Android-aarch64.tar.gz
+            
+          - os_name: Android-armv7
+            os: ubuntu-22.04
+            target: armv7-linux-androideabi
+            bin: ${{ github.event.repository.name }}
+            name: ${{ github.event.repository.name }}-Android-armv7.tar.gz
             
         toolchain:
           - stable
