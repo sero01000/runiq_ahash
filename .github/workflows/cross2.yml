@@ -38,173 +38,7 @@ jobs:
             name: runiq_ahash-Darwin-x86_64.tar.gz
             command: both
 
-          - release_for: Linux-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-x86_64-musl.tar.gz
-            command: both
-          
-          - release_for: Linux-aarch64-musl
-            os: ubuntu-20.04
-            target: aarch64-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-aarch64-musl.tar.gz
-            command: both
-          
-          - release_for: Linux-aarch64-musl
-            os: ubuntu-20.04
-            target: aarch64-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-aarch64-musl.tar.gz
-            command: both
-          
-          - release_for: Linux-aarch64
-            os: ubuntu-20.04
-            target: aarch64-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-aarch64.tar.gz
-            command: both
-            
-          - release_for: Linux-arm
-            os: ubuntu-20.04
-            target: arm-unknown-linux-musleabi
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-arm-musl.tar.gz
-            command: both
-            
-          - release_for: Linux-i686
-            os: ubuntu-20.04
-            target: i686-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-i686-musl.tar.gz
-            command: both
-            
-          - release_for: Linux-mips
-            os: ubuntu-20.04
-            target: mips-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-mips.tar.gz
-            command: both
-            
-          - release_for: Linux-mipsel
-            os: ubuntu-20.04
-            target: mipsel-unknown-linux-musl
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-mipsel.tar.gz
-            command: both
-            
-          - release_for: Linux-mips64
-            os: ubuntu-20.04
-            target: mips64-unknown-linux-muslabi64
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-mips64.tar.gz
-            command: both
-            
-          - release_for: Linux-mips64el
-            os: ubuntu-20.04
-            target: mips64el-unknown-linux-muslabi64
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-mips64el.tar.gz
-            command: both
-          
-          - release_for: Linux-powerpc
-            os: ubuntu-20.04
-            target: powerpc-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-powerpc-gnu.tar.gz
-            command: both
-            
-          - release_for: Linux-powerpc64
-            os: ubuntu-20.04
-            target: powerpc64-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-powerpc64-gnu.tar.gz
-            command: both
-            
-          - release_for: Linux-powerpc64le
-            os: ubuntu-20.04
-            target: powerpc64le-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-powerpc64le.tar.gz
-            command: both
-            
-          - release_for: Linux-riscv64
-            os: ubuntu-20.04
-            target: riscv64gc-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-riscv64gc-gnu.tar.gz
-            command: both
-            
-          - release_for: Linux-s390x
-            os: ubuntu-20.04
-            target: s390x-unknown-linux-gnu
-            bin: runiq_ahash
-            name: runiq_ahash-Linux-s390x-gnu.tar.gz
-            command: both
-            
-          - release_for: NetBSD-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-netbsd
-            bin: runiq_ahash
-            name: runiq_ahash-NetBSD-x86_64.tar.gz
-            command: both
-            
-          - release_for: Windows-aarch64
-            os: windows-latest
-            target: aarch64-pc-windows-msvc
-            bin: runiq_ahash.exe
-            name: runiq_ahash-Windows-aarch64.zip
-            command: both
-            
-          - release_for: Windows-i686
-            os: windows-latest
-            target: i686-pc-windows-msvc
-            bin: runiq_ahash.exe
-            name: runiq_ahash-Windows-i686.zip
-            command: both
-            
-          - release_for: Windows-x86_64
-            os: windows-latest
-            target: x86_64-pc-windows-msvc
-            bin: runiq_ahash.exe
-            name: runiq_ahash-Windows-x86_64.zip
-            command: both
-            
-          - release_for: macOS-x86_64
-            os: macos-12
-            target: x86_64-apple-darwin
-            bin: runiq_ahash
-            name: runiq_ahash-Darwin-x86_64.tar.gz
-            command: both
-            
-          - release_for: macOS-aarch64
-            os: macos-12
-            target: aarch64-apple-darwin
-            bin: runiq_ahash
-            name: runiq_ahash-Darwin-aarch64.tar.gz
-            command: both
-            
-          - release_for: IOS-aarch64
-            os: macos-12
-            target: aarch64-apple-ios
-            bin: runiq_ahash
-            name: runiq_ahash-IOS-aarch64.tar.gz
-            command: both
-            
-          - release_for: Android-aarch64
-            os: ubuntu-22.04
-            target: aarch64-linux-android
-            bin: runiq_ahash
-            name: runiq_ahash-Android-aarch64.tar.gz
-            command: both
-            
-          - release_for: Android-armv7
-            os: ubuntu-22.04
-            target: armv7-linux-androideabi
-            bin: runiq_ahash
-            name: runiq_ahash-Android-armv7.tar.gz
-            command: both
+            # more release targets here ...
 
     runs-on: ${{ matrix.platform.os }}
     steps:
@@ -217,9 +51,11 @@ jobs:
           target: ${{ matrix.platform.target }}
           args: "--locked --release"
           strip: true
+
       - name: Package as archive
         shell: bash
         run: |
+          echo "running package"
           cd target/${{ matrix.platform.target }}/release
           if [[ "${{ matrix.platform.os }}" == "windows-latest" ]]; then
             7z a ../../../${{ matrix.platform.name }} ${{ matrix.platform.bin }}
@@ -231,16 +67,24 @@ jobs:
           matrix.toolchain == 'stable' &&
           ( startsWith( github.ref, 'refs/tags/v' ) ||
             github.ref == 'refs/tags/test-release' )
-            
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
           name: runiq_ahash-${{ matrix.platform.os_name }}
           path: "runiq_ahash-*"
-          
+        if: matrix.toolchain == 'stable' && github.ref == 'refs/tags/test-release'
+      - name: Generate SHA-256
+        run: shasum -a 256 ${{ matrix.platform.name }}
+        if: |
+          matrix.toolchain == 'stable' &&
+          matrix.platform.os == 'macOS-latest' &&
+          ( startsWith( github.ref, 'refs/tags/v' ) ||
+            github.ref == 'refs/tags/test-release' )
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v1
         with:
           draft: true
           files: "runiq_ahash-*"
           body_path: Changes.md
+        if: matrix.toolchain == 'stable' && startsWith( github.ref, 'refs/tags/v' )
+        
