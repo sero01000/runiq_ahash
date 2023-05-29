@@ -111,13 +111,13 @@ jobs:
             os: macos-12
             target: x86_64-apple-darwin
             bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Apple-Darwin-x86_64.tar.gz
+            name: ${{ github.event.repository.name }}-macOS-x86_64.tar.gz
             
           - os_name: macOS-aarch64
             os: macos-12
             target: aarch64-apple-darwin
             bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-Apple-Darwin-aarch64.tar.gz
+            name: ${{ github.event.repository.name }}-macOS-aarch64.tar.gz
             skip_tests: true
             
           - os_name: IOS-aarch64
@@ -127,11 +127,13 @@ jobs:
             name: ${{ github.event.repository.name }}-Apple-IOS-aarch64.tar.gz
             skip_tests: true
 
-          - os_name: aarch64-linux-android
-            os: ubuntu-22.04
-            target: aarch64-linux-android
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-aarch64-linux-android.tar.gz
+# Error
+# note: /android-ndk/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/ld: cannot find -lunwind
+#           - os_name: aarch64-linux-android
+#             os: ubuntu-22.04
+#             target: aarch64-linux-android
+#             bin: ${{ github.event.repository.name }}
+#             name: ${{ github.event.repository.name }}-aarch64-linux-android.tar.gz
             
           - os_name: Android-armv7
             os: ubuntu-22.04
