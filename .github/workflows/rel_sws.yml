@@ -1,4 +1,4 @@
-name: release
+name: release like SWS
 on:
   release:
     types: [created]
@@ -68,7 +68,7 @@ jobs:
           - windows-msvc
           - windows-msvc-i686
           - windows-pc-gnu
-          # - windows-msvc-arm64
+          - windows-msvc-arm64
         include:
         - build: linux-musl
           os: ubuntu-22.04
@@ -134,10 +134,10 @@ jobs:
           os: windows-2022
           rust: stable-x86_64-gnu
           target: x86_64-pc-windows-gnu
-        # - build: windows-msvc-arm64
-        #   os: windows-2022
-        #   rust: stable
-        #   target: aarch64-pc-windows-msvc
+        - build: windows-msvc-arm64
+          os: windows-2022
+          rust: stable
+          target: aarch64-pc-windows-msvc
 
     steps:
     - name: Checkout repository
