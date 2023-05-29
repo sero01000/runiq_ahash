@@ -11,7 +11,7 @@ on:
   pull_request:
 
 env:
-  CRATE_NAME: precious
+  CRATE_NAME: ${{ github.event.repository.name }}
   GITHUB_TOKEN: ${{ github.token }}
   RUST_BACKTRACE: 1
 
@@ -31,136 +31,160 @@ jobs:
           - os_name: FreeBSD-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-freebsd
-            bin: precious
-            name: precious-FreeBSD-x86_64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-FreeBSD-x86_64.tar.gz
             skip_tests: true
+            
           - os_name: Linux-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-linux-musl
-            bin: precious
-            name: precious-Linux-x86_64-musl.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-x86_64-musl.tar.gz
+            
           - os_name: Linux-aarch64-musl
             os: ubuntu-20.04
             target: aarch64-unknown-linux-musl
-            bin: precious
-            name: precious-Linux-aarch64-musl.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-aarch64-musl.tar.gz
+            
           - os_name: Linux-aarch64
             os: ubuntu-20.04
             target: aarch64-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-aarch64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-aarch64.tar.gz
+            
           - os_name: Linux-arm
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
-            bin: precious
-            name: precious-Linux-arm-musl.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-arm-musl.tar.gz
+            
           - os_name: Linux-i686
             os: ubuntu-20.04
             target: i686-unknown-linux-musl
-            bin: precious
-            name: precious-Linux-i686-musl.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-i686-musl.tar.gz
             skip_tests: true
+            
           - os_name: Linux-mips
             os: ubuntu-20.04
             target: mips-unknown-linux-musl
-            bin: precious
-            name: precious-Linux-mips.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-mips.tar.gz
+            
           - os_name: Linux-mipsel
             os: ubuntu-20.04
             target: mipsel-unknown-linux-musl
-            bin: precious
-            name: precious-Linux-mipsel.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-mipsel.tar.gz
+            
           - os_name: Linux-mips64
             os: ubuntu-20.04
             target: mips64-unknown-linux-muslabi64
-            bin: precious
-            name: precious-Linux-mips64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-mips64.tar.gz
             skip_tests: true
+            
           - os_name: Linux-mips64el
             os: ubuntu-20.04
             target: mips64el-unknown-linux-muslabi64
-            bin: precious
-            name: precious-Linux-mips64el.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-mips64el.tar.gz
             skip_tests: true
+            
           - os_name: Linux-powerpc
             os: ubuntu-20.04
             target: powerpc-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-powerpc-gnu.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-powerpc-gnu.tar.gz
             skip_tests: true
+            
           - os_name: Linux-powerpc64
             os: ubuntu-20.04
             target: powerpc64-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-powerpc64-gnu.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-powerpc64-gnu.tar.gz
             skip_tests: true
+            
           - os_name: Linux-powerpc64le
             os: ubuntu-20.04
             target: powerpc64le-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-powerpc64le.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-powerpc64le.tar.gz
             skip_tests: true
+            
           - os_name: Linux-riscv64
             os: ubuntu-20.04
             target: riscv64gc-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-riscv64gc-gnu.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-riscv64gc-gnu.tar.gz
+            
           - os_name: Linux-s390x
             os: ubuntu-20.04
             target: s390x-unknown-linux-gnu
-            bin: precious
-            name: precious-Linux-s390x-gnu.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Linux-s390x-gnu.tar.gz
             skip_tests: true
+            
           - os_name: NetBSD-x86_64
             os: ubuntu-20.04
             target: x86_64-unknown-netbsd
-            bin: precious
-            name: precious-NetBSD-x86_64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-NetBSD-x86_64.tar.gz
             skip_tests: true
+            
           - os_name: Windows-aarch64
             os: windows-latest
             target: aarch64-pc-windows-msvc
-            bin: precious.exe
-            name: precious-Windows-aarch64.zip
+            bin: ${{ env.CRATE_NAME }}.exe
+            name: ${{ env.CRATE_NAME }}-Windows-aarch64.zip
             skip_tests: true
+            
           - os_name: Windows-i686
             os: windows-latest
             target: i686-pc-windows-msvc
-            bin: precious.exe
-            name: precious-Windows-i686.zip
+            bin: ${{ env.CRATE_NAME }}.exe
+            name: ${{ env.CRATE_NAME }}-Windows-i686.zip
             skip_tests: true
+            
           - os_name: Windows-x86_64
             os: windows-latest
             target: x86_64-pc-windows-msvc
-            bin: precious.exe
-            name: precious-Windows-x86_64.zip
+            bin: ${{ env.CRATE_NAME }}.exe
+            name: ${{ env.CRATE_NAME }}-Windows-x86_64.zip
+            
           - os_name: macOS-x86_64
             os: macos-12
             target: x86_64-apple-darwin
-            bin: precious
-            name: precious-Darwin-x86_64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Darwin-x86_64.tar.gz
+            
           - os_name: macOS-aarch64
             os: macos-12
             target: aarch64-apple-darwin
-            bin: precious
-            name: precious-Darwin-aarch64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Darwin-aarch64.tar.gz
             skip_tests: true
+            
           - os_name: IOS-aarch64
             os: macos-12
             target: aarch64-apple-ios
-            bin: precious
-            name: precious-IOS-aarch64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-IOS-aarch64.tar.gz
             skip_tests: true
+            
           - os_name: Android-aarch64
             os: ubuntu-22.04
             target: aarch64-linux-android
-            bin: precious
-            name: precious-Android-aarch64.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Android-aarch64.tar.gz
+            
           - os_name: Android-armv7
             os: ubuntu-22.04
             target: armv7-linux-androideabi
-            bin: precious
-            name: precious-Android-armv7.tar.gz
+            bin: ${{ env.CRATE_NAME }}
+            name: ${{ env.CRATE_NAME }}-Android-armv7.tar.gz
+            
         toolchain:
           - stable
           - beta
@@ -209,8 +233,8 @@ jobs:
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: precious-${{ matrix.platform.os_name }}
-          path: "precious-*"
+          name: ${{ env.CRATE_NAME }}-${{ matrix.platform.os_name }}
+          path: "${{ env.CRATE_NAME }}-*"
         if: matrix.toolchain == 'stable' && github.ref == 'refs/tags/test-release'
       - name: Generate SHA-256
         run: shasum -a 256 ${{ matrix.platform.name }}
@@ -223,6 +247,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           draft: true
-          files: "precious-*"
+          files: "${{ env.CRATE_NAME }}-*"
           body_path: Changes.md
         if: matrix.toolchain == 'stable' && startsWith( github.ref, 'refs/tags/v' )
