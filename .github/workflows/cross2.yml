@@ -1,4 +1,4 @@
-name: Rust
+name: cross_2
 
 on:
   release:
@@ -231,11 +231,13 @@ jobs:
           matrix.toolchain == 'stable' &&
           ( startsWith( github.ref, 'refs/tags/v' ) ||
             github.ref == 'refs/tags/test-release' )
+            
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
           name: runiq_ahash-${{ matrix.platform.os_name }}
           path: "runiq_ahash-*"
+          
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v1
         with:
