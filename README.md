@@ -8,10 +8,10 @@ This project offers an efficient way (in both time and space) to filter duplicat
 This tool will be available via [Crates.io](https://crates.io/crates/runiq), so you can install it directly with `cargo`:
 
 ```shell
-$ cargo install runiq
+$ cargo install runiq_ahash
 ```
 
-If you'd rather just grab a pre-built binary, you might be able to download the correct binary for your architecture directly from the latest release on GitHub [here](https://github.com/whitfin/runiq/releases). The list of binaries may not be complete, so please file an issue if your setup is missing (bonus points if you attach the appropriate binary).
+If you'd rather just grab a pre-built binary, you might be able to download the correct binary for your architecture directly from the latest release on GitHub [here](https://github.com/sero01000/runiq_ahash/releases/latest). The list of binaries may not be complete, so please file an issue if your setup is missing (bonus points if you attach the appropriate binary).
 
 ### Examples
 
@@ -31,7 +31,7 @@ this is another unique line
 this is a duplicate line
 this is a duplicate line
 
-$ runiq input.txt
+$ runiq_ahash input.txt
 this is a unique line
 this is a duplicate line
 this is another unique line
