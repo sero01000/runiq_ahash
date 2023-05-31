@@ -159,23 +159,26 @@ jobs:
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-x86_64-unknown-redox.tar.gz
           
-          - os_name: wasm32-unknown-emscripten
-            os: ubuntu-22.04
-            target: wasm32-unknown-emscripten
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-wasm32-unknown-emscripten.tar.gz
-          
-          - os_name: wasm32-unknown-unknown
-            os: ubuntu-22.04
-            target: wasm32-unknown-unknown
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-wasm32-unknown-unknown.tar.gz
-          
-          - os_name: wasm32-wasi
-            os: ubuntu-22.04
-            target: wasm32-wasi
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-wasm32-wasi.tar.gz
+# error: Only features sync,macros,io-util,rt,time are supported on wasm.
+#           - os_name: wasm32-unknown-emscripten
+#             os: ubuntu-22.04
+#             target: wasm32-unknown-emscripten
+#             bin: ${{ github.event.repository.name }}
+#             name: ${{ github.event.repository.name }}-wasm32-unknown-emscripten.tar.gz
+
+# the wasm*-unknown-unknown targets are not supported by default, you may need to enable the "js" feature. For more information see: https://docs.rs/getrandom/#webassembly-support
+#           - os_name: wasm32-unknown-unknown
+#             os: ubuntu-22.04
+#             target: wasm32-unknown-unknown
+#             bin: ${{ github.event.repository.name }}
+#             name: ${{ github.event.repository.name }}-wasm32-unknown-unknown.tar.gz
+    
+#  error: Only features sync,macros,io-util,rt,time are supported on wasm.
+#           - os_name: wasm32-wasi
+#             os: ubuntu-22.04
+#             target: wasm32-wasi
+#             bin: ${{ github.event.repository.name }}
+#             name: ${{ github.event.repository.name }}-wasm32-wasi.tar.gz
             
         toolchain:
           - stable
