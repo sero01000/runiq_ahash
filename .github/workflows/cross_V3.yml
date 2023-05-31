@@ -217,6 +217,7 @@ jobs:
       - name: Build binary for aarch64-linux-android
         shell: bash
         run: |
+          rustup target add aarch64-linux-android
           scripts/ci/cargo.sh build --verbose --release --target=${{ matrix.platform.target }}
         if: |
           matrix.toolchain == 'stable' &&
