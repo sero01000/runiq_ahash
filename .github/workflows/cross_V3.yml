@@ -220,6 +220,7 @@ jobs:
 #           rustup target add aarch64-linux-android
 #           scripts/ci/cargo.sh build --verbose --release --target=${{ matrix.platform.target }}
         run: |
+          rustup target add aarch64-linux-android
           # Adapted from https://github.com/briansmith/ring/blob/main/mk/cargo.sh
           set -eux -o pipefail
           OS_NAME=$(uname -s | tr A-Z a-z)
@@ -235,9 +236,12 @@ jobs:
           if [ -n "${ANDROID_NDK_ROOT-}" ]; then
             android_tools=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${OS_NAME}-x86_64/bin
           fi
+          
+          export CC_aarch64_linux_android=$android_tools/aarch64-linux-android21-clang
+          export AR_aarch64_linux_android=$android_tools/llvm-ar
+          export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$android_tools/aarch64-linux-android21-clang
 
-          cargo CC_aarch64_linux_android=$android_tools/aarch64-linux-android21-clang AR_aarch64_linux_android=$android_tools/llvm-ar CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$android_tools/aarch64-linux-android21-clang build --verbose --release --target=aarch64-linux-android
-
+          cargo --verbose --release --target=aarch64-linux-android
         if: |
           matrix.toolchain == 'stable' &&
           contains(matrix.platform.target, 'aarch64-linux-android') &&
