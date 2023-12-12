@@ -85,13 +85,14 @@ jobs:
             bin: ${{ github.event.repository.name }}
             name: ${{ github.event.repository.name }}-x86_64-unknown-freebsd.tar.gz
             skip_tests: true
-
-          - os_name: NetBSD-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-netbsd
-            bin: ${{ github.event.repository.name }}
-            name: ${{ github.event.repository.name }}-x86_64-unknown-netbsd.tar.gz
-            skip_tests: true
+          
+          # /usr/local/lib/gcc/x86_64-unknown-netbsd/9.4.0/../../../../x86_64-unknown-netbsd/bin/ld: cannot find -lexecinfo
+          # - os_name: NetBSD-x86_64
+          #   os: ubuntu-20.04
+          #   target: x86_64-unknown-netbsd
+          #   bin: ${{ github.event.repository.name }}
+          #   name: ${{ github.event.repository.name }}-x86_64-unknown-netbsd.tar.gz
+          #   skip_tests: true
  
           - os_name: Windows-x86_64
             os: windows-latest
