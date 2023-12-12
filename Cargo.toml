@@ -28,5 +28,5 @@ bytelines = "2.4"
 clap = { version = "3.2.25", features = ["derive"] }
 fnv = "1.0.7"
 scalable_bloom_filter = "0.1.1"
-ahash = "0.8.3"
+ahash = "0.8.6"
 
